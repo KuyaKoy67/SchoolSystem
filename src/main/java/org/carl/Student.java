@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @EqualsAndHashCode
 @Getter
@@ -15,7 +15,11 @@ public class Student {
     private Gender gender;
     private Address address;
     private Department department;
-    private List<Course> registeredCourses;
+    private ArrayList<Course> registeredCourses;
 
     private static int nextId;
+
+    public enum Gender {
+        FEMALE, MALE
+    }
 }
