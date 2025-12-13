@@ -19,6 +19,14 @@ public class Student {
 
     private static int nextId;
 
+    public String toSimplifiedString() {
+        return "Student{" +
+                "studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", departmentName=" + department.getDepartmentName() + '\'' +
+                '}';
+    }
+
     public Student(String studentName, Gender gender, Address address,
                    Department department) {
         this.studentId = String.format("%06d", nextId++);
