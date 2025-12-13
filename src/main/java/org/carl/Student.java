@@ -27,6 +27,18 @@ public class Student {
                 '}';
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", gender=" + gender +
+                ", address=" + address +
+                ", department=" + department +
+                ", registeredCourses=" + registeredCourses.toString() +
+                '}';
+    }
+
     public Student(String studentName, Gender gender, Address address,
                    Department department) {
         this.studentId = String.format("%06d", nextId++);
