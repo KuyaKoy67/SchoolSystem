@@ -30,4 +30,13 @@ public class Course {
                 ", registeredStudents=" + registeredStudents.toString() +
                 '}';
     }
+    
+    public String toSimplifiedString() {
+        return "Course{" +
+                "courseId='" + courseId + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", credits=" + credits +
+                ", department=" + department.getDepartmentName() +
+                '}';
+    }
 }
