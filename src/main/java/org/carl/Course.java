@@ -19,6 +19,17 @@ public class Course {
 
     private static int nextId;
 
+    public boolean isAssignmentWeightValid() {
+        double sum = 0;
+        double sumOfWeights = 100;
+
+        for (Assignment assignment : assignments) {
+            sum += assignment.getWeight();
+        }
+
+        return sum == sumOfWeights;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
