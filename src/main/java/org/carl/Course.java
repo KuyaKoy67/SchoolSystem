@@ -30,6 +30,22 @@ public class Course {
         return sum == sumOfWeights;
     }
 
+    public boolean registerStudent(Student student) {
+        if (registeredStudents.contains(student)) {
+            return false;
+        }
+
+        registeredStudents.add(student);
+
+        for (Assignment assignment : assignments) {
+            assignment.getScores().add(null);
+
+            finalScores.add(null);
+        }
+
+        return true;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
