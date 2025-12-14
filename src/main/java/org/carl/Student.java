@@ -20,7 +20,7 @@ public class Student {
     private static int nextId;
 
     public boolean registerCourse(Course course) {
-        if (this.registeredCourses.contains(course)) {
+        if (registeredCourses.contains(course)) {
             return false;
         }
 
@@ -31,6 +31,16 @@ public class Student {
         for (Assignment assignment : course.getAssignments()) {
             assignment.getScores().add(null);
         }
+
+        return true;
+    }
+
+    public boolean dropCourse(Course course) {
+        if (!registeredCourses.contains(course)) {
+            return false;
+        }
+
+        registeredCourses.remove(course);
 
         return true;
     }
