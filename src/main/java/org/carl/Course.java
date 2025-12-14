@@ -20,6 +20,16 @@ public class Course {
 
     private static int nextId;
 
+    public Course(String courseName, double credits, Department department) {
+        this.courseId = "C" + "-" + department.getDepartmentId() + "-" + String.format("%02d", nextId++);
+        this.courseName = Util.toTitleCase(courseName);
+        this.credits = credits;
+        this.department = department;
+        this.assignments = new ArrayList<>();
+        this.registeredStudents = new ArrayList<>();
+        this.finalScores = new ArrayList<>();
+    }
+
     public boolean isAssignmentWeightValid() {
         double sum = 0;
         double sumOfWeights = 100;
@@ -103,14 +113,42 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "courseId='" + courseId + '\'' +
-                ", courseName='" + courseName + '\'' +
-                ", credits=" + credits +
-                ", departmentName=" + department.getDepartmentName() +
-                ", assignments=" + assignments +
-                ", registeredStudents=" + registeredStudents.toString() +
-                '}';
+        String result = "Course{" +
+                "courseId= " + courseId +
+                ", courseName= " + courseName +
+                ", credits= " + credits +
+                ", departmentName= " + department.getDepartmentName();
+
+        result = result + "\nassignments= [";
+        for (int i = 0; i < assignments.size(); i++) {
+            result = result + assignments.get(i).toString();
+
+            if (i < assignments.size() - 1) {
+                result = result + ", ";
+            }
+        }
+
+        result = result + "]";
+
+        result = result + "\nregisteredStudents= [";
+
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            result = result + registeredStudents.get(i).toSimplifiedString();
+
+            if (i < registeredStudents.size() - 1) {
+                result = result + ", ";
+            }
+        }
+
+        result = result + "]";
+
+        boolean isValid = isAssignmentWeightValid();
+
+        String weightStatus = isValid ? "Total assignment weight is valid" : "Total assignment weight is invalid";
+
+        result = result + "\nweightStatus=" + weightStatus;
+
+        return result + "}";
     }
     
     public String toSimplifiedString() {
