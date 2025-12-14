@@ -4,7 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @EqualsAndHashCode
 @Getter
@@ -14,8 +14,9 @@ public class Course {
     private String courseName;
     private double credits;
     private Department department;
-    private List<Assignment> assignments;
-    private List<Student> registeredStudents;
+    private ArrayList<Assignment> assignments;
+    private ArrayList<Student> registeredStudents;
+    private ArrayList<Double> finalScores;
 
     private static int nextId;
 
