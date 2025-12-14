@@ -28,6 +28,15 @@ public class Department {
         return true;
     }
 
+    public void setDepartmentName(String departmentName) {
+        if (isDepartmentNameValid(departmentName)) {
+            this.departmentName = Util.toTitleCase(departmentName);
+        } else {
+            this.departmentName = null;
+            this.departmentId = null;
+        }
+    }
+
     public Department(String departmentName) {
 
         if (isDepartmentNameValid(departmentName)) {
