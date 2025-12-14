@@ -36,21 +36,21 @@ public class Assignment {
     public void generateRandomScore() {
         Random rand = new Random();
 
-        int randomValue = rand.nextInt(0, 10 + 1);
+        int randomValue = rand.nextInt(0, 10);
         int randomScore;
 
         if (randomValue == 0) {
-            randomScore = rand.nextInt(0, 60 + 1);
+            randomScore = rand.nextInt(0, 60);
 
         } else if (randomValue == 1 || randomValue == 2) {
-            randomScore = rand.nextInt(60, 70 + 1);
+            randomScore = rand.nextInt(60, 70);
 
         } else if (randomValue == 3 || randomValue == 4) {
-            randomScore = rand.nextInt(70, 80 + 1);
+            randomScore = rand.nextInt(70, 80);
 
         } else if (randomValue == 5 || randomValue == 6 ||
                 randomValue == 7 || randomValue == 8) {
-            randomScore = rand.nextInt(80, 90 + 1);
+            randomScore = rand.nextInt(80, 90);
 
         } else {
             randomScore = rand.nextInt(90, 100 + 1);
@@ -63,7 +63,7 @@ public class Assignment {
     @Override
     public String toString() {
         return "Assignment{" +
-                String.format("assignmentId='" + nextId++) + '\'' +
+                "assignmentId='" + assignmentId + '\'' +
                 ", assignmentName='" + assignmentName + '\'' +
                 ", weight=" + weight +
                 '}';
