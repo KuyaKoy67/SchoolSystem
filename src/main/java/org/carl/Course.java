@@ -47,6 +47,32 @@ public class Course {
         return true;
     }
 
+    public int[] calcStudentAverage() {
+        int numOfStudents = registeredStudents.size();
+
+        int[] finalScoresArray = new int[numOfStudents];
+
+        for (int idxOfStudent = 0; idxOfStudent < numOfStudents; idxOfStudent++) {
+            double studentWeightedAverage = 0.0;
+
+            for (Assignment assignment : assignments) {
+                Integer score = assignment.getScores().get(idxOfStudent);
+
+                if (score != null) {
+                    double weight = assignment.getWeight();
+
+                    studentWeightedAverage += (score * weight);
+                }
+            }
+
+            finalScores.add(studentWeightedAverage);
+
+            finalScoresArray[idxOfStudent] = (int) Math.round(studentWeightedAverage);
+        }
+
+        return finalScoresArray;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
