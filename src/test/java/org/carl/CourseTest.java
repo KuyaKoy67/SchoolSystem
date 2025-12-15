@@ -46,6 +46,34 @@ class CourseTest {
     }
 
     @Test
+    @DisplayName("registerStudent(): registering a student in a course -> true ")
+    void registerStudentTest1() {
+        Department department = new Department("Computer Science");
+        Address address = new Address(120, "Bouchette", "Montreal", Address.Province.QC, "A1B2C3");
+        Student student = new Student("John Alack", Student.Gender.MALE, address, department);
+        Course course1 = new Course("Discrete Math", 3.0, department);
+
+        boolean expected = true;
+        boolean actual = course1.registerStudent(student);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("registerStudent(): registering a student in a course that he is already in -> false ")
+    void registerStudentTest2() {
+        Department department = new Department("Computer Science");
+        Address address = new Address(120, "Bouchette", "Montreal", Address.Province.QC, "A1B2C3");
+        Student student = new Student("John Alack", Student.Gender.MALE, address, department);
+        Course course1 = new Course("Discrete Math", 3.0, department);
+
+        course1.getRegisteredStudents().add(student);
+
+        boolean expected = false;
+        boolean actual = course1.registerStudent(student);
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     @DisplayName("calcStudentsAverage(): 1 student, two assignments with weights 40 and 60 -> {86}")
     void testCalcStudentsAverage1() {
         Department department = new Department("Computer Science");
