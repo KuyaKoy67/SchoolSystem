@@ -145,4 +145,27 @@ class CourseTest {
         boolean actual = course1.addAssignment(newName, newWeight, newMaxScore);
         Assertions.assertTrue(actual);
     }
+
+    @Test
+    @DisplayName("addAssignment(): assignmentName is same as one of the assignments already assigned -> false")
+    void addAssignment2() {
+        Department department = new Department("Computer Science");
+        Course course1 = new Course("Discrete Math", 3.0, department);
+
+        Address address = new Address(120, "Bouchette", "Montreal", Address.Province.QC, "A1B2C3");
+        Student student1 = new Student("John Alack", Student.Gender.MALE, address, department);
+        Student student2 = new Student("Barley Alack", Student.Gender.MALE, address, department);
+
+        student1.registerCourse(course1);
+        student2.registerCourse(course1);
+
+        course1.addAssignment("Mini Quiz", 10.0, 100);
+
+        String newName = "Mini quiz";
+        double newWeight = 40.0;
+        int newMaxScore = 100;
+
+        boolean actual = course1.addAssignment(newName, newWeight, newMaxScore);
+        Assertions.assertFalse(actual);
+    }
 }
