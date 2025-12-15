@@ -36,4 +36,36 @@ class StudentTest {
 
         Assertions.assertEquals(expectedReturn, actualReturn);
     }
+
+    @Test
+    @DisplayName("Course drop -> true")
+    void dropCourseTest1() {
+        Department department = new Department("Computer Science");
+        Address address = new Address(120, "Bouchette", "Montreal", Address.Province.QC, "A1B2C3");
+        Student student = new Student("John Alack", Student.Gender.MALE, address, department);
+        Course course = new Course("Discrete Math", 3.0, department);
+
+        student.getRegisteredCourses().add(course);
+        course.getRegisteredStudents().add(student);
+
+        boolean expectedReturn = true;
+        boolean actualReturn = student.dropCourse(course);
+
+        Assertions.assertEquals(expectedReturn, actualReturn);
+    }
+
+    @Test
+    @DisplayName("Course that's already dropped -> false")
+    void dropCourseTest2() {
+        Department department = new Department("Computer Science");
+        Address address = new Address(120, "Bouchette", "Montreal", Address.Province.QC, "A1B2C3");
+        Student student = new Student("John Alack", Student.Gender.MALE, address, department);
+        Course course = new Course("Discrete Math", 3.0, department);
+
+        boolean expectedReturn = false;
+        boolean actualReturn = student.dropCourse(course);
+
+        Assertions.assertEquals(expectedReturn, actualReturn);
+    }
+
 }
